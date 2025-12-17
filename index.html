@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samruddhi Ashok Shintre - Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .portfolio-wrapper {
+            width: 100%;
+            min-height: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f0ff 100%);
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            min-height: 600px;
+            background: linear-gradient(135deg, #9b59b6 0%, #6b9bd1 50%, #ff9ecd 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-content .intro {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: white;
+            color: #9b59b6;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #9b59b6;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            width: 100%;
+            padding: 80px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #9b59b6;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #9b59b6, #6b9bd1);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(155, 89, 182, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #9b59b6;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .skill-item {
+            padding: 10px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item::before {
+            content: '▸';
+            color: #ff9ecd;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(155, 89, 182, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #9b59b6, #6b9bd1);
+            padding: 30px;
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-body p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .project-features li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            color: #6b9bd1;
+            font-weight: bold;
+        }
+
+        /* Achievements Section */
+        .achievements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .achievement-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1);
+            border-left: 5px solid #ff9ecd;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(5px);
+            border-left-color: #9b59b6;
+        }
+
+        .achievement-item h4 {
+            color: #9b59b6;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .achievement-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(155, 89, 182, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f8f0ff;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #f0e5ff;
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #9b59b6, #6b9bd1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info a {
+            color: #9b59b6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #6b9bd1;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background: linear-gradient(135deg, #9b59b6 0%, #6b9bd1 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="portfolio-wrapper"><!-- Hero Section -->
+   <section class="hero">
+    <div class="hero-content">
+     <h1 id="name">Samruddhi Ashok Shintre</h1>
+     <p class="tagline" id="tagline">Aspiring Engineer | Python &amp; C Programmer | AI &amp; Robotics Enthusiast</p>
+     <p class="intro" id="intro-text">A quick learner, good listener, and team player passionate about building smart and innovative solutions.</p>
+     <div class="cta-buttons"><a href="#projects" class="cta-button cta-primary">View Projects</a> <a href="#contact" class="cta-button cta-secondary">Contact Me</a>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section class="section" id="about">
+    <div class="section-container">
+     <h2 class="section-title">About Me</h2>
+     <div class="about-content">
+      <p id="about-text">I am an engineering student who has studied Python and C programming languages in my first year. I have strong fundamentals and a keen interest in learning new technologies. I am a quick learner, a good listener, and enjoy teamwork. I love working on innovative projects that combine technology and real-world problem solving.</p>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section class="section">
+    <div class="section-container">
+     <h2 class="section-title">Skills &amp; Expertise</h2>
+     <div class="skills-grid">
+      <div class="skill-category">
+       <h3>Programming Languages</h3>
+       <div class="skill-item">
+        Python
+       </div>
+       <div class="skill-item">
+        C
+       </div>
+       <div class="skill-item">
+        Programming Fundamentals
+       </div>
+      </div>
+      <div class="skill-category">
+       <h3>Technical Skills</h3>
+       <div class="skill-item">
+        Problem Solving
+       </div>
+       <div class="skill-item">
+        Robotics Concepts
+       </div>
+       <div class="skill-item">
+        AI-based Applications
+       </div>
+       <div class="skill-item">
+        Web Development Basics
+       </div>
+      </div>
+      <div class="skill-category">
+       <h3>Soft Skills</h3>
+       <div class="skill-item">
+        Quick Learner
+       </div>
+       <div class="skill-item">
+        Good Listener
+       </div>
+       <div class="skill-item">
+        Teamwork
+       </div>
+       <div class="skill-item">
+        Communication
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projects Section -->
+   <section class="section" id="projects">
+    <div class="section-container">
+     <h2 class="section-title">Projects</h2>
+     <div class="projects-grid">
+      <div class="project-card">
+       <div class="project-header">
+        <h3>Fire Button Robot</h3>
+       </div>
+       <div class="project-body">
+        <p>A robot designed to respond to fire emergencies using button-based controls.</p>
+        <ul class="project-features">
+         <li>Safety-focused design</li>
+         <li>Basic robotics concepts</li>
+         <li>1st Year Project</li>
+        </ul>
+       </div>
+      </div>
+      <div class="project-card">
+       <div class="project-header">
+        <h3>Smart Traffic Signal</h3>
+       </div>
+       <div class="project-body">
+        <p>Intelligent traffic signal project to improve traffic flow using logic-based automation.</p>
+        <ul class="project-features">
+         <li>Automated traffic management</li>
+         <li>Logic-based system</li>
+         <li>Real-world application</li>
+        </ul>
+       </div>
+      </div>
+      <div class="project-card">
+       <div class="project-header">
+        <h3>Wonderwise Website</h3>
+       </div>
+       <div class="project-body">
+        <p>An AI-driven website with multiple creative features for planning and storytelling.</p>
+        <ul class="project-features">
+         <li>Eternal Planner</li>
+         <li>Storytelling Application</li>
+         <li>AI-powered features</li>
+         <li>College-level project</li>
+        </ul>
+       </div>
+      </div>
+      <div class="project-card">
+       <div class="project-header">
+        <h3>Smart India Hackathon 2025</h3>
+       </div>
+       <div class="project-body">
+        <p>Participated in SIH 2025, gaining valuable experience in innovation and collaborative problem-solving.</p>
+        <ul class="project-features">
+         <li>National-level hackathon</li>
+         <li>Team collaboration</li>
+         <li>Innovation-focused</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Achievements Section -->
+   <section class="section">
+    <div class="section-container">
+     <h2 class="section-title">Achievements &amp; Participation</h2>
+     <div class="achievements-list">
+      <div class="achievement-item">
+       <h4>Smart India Hackathon 2025</h4>
+       <p>Participated in India's premier innovation challenge, collaborating with talented peers to solve real-world problems.</p>
+      </div>
+      <div class="achievement-item">
+       <h4>College-Level Projects</h4>
+       <p>Successfully completed multiple projects demonstrating AI and web development capabilities.</p>
+      </div>
+      <div class="achievement-item">
+       <h4>Hands-on Experience</h4>
+       <p>Gained practical experience in AI-based applications, robotics, and automated systems.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section class="section" id="contact">
+    <div class="section-container">
+     <h2 class="section-title">Get In Touch</h2>
+     <div class="contact-content">
+      <div class="contact-item">
+       <div class="contact-icon">
+        📧
+       </div>
+       <div class="contact-info"><a href="mailto:samruddhishintre76@gmail.com" id="email-link">samruddhishintre76@gmail.com</a>
+        <p>Drop me an email</p>
+       </div>
+      </div>
+      <div class="contact-item">
+       <div class="contact-icon">
+        💼
+       </div>
+       <div class="contact-info"><a href="https://linkedin.com/in/samruddhi-shintre" target="_blank" rel="noopener noreferrer" id="linkedin-link">Samruddhi Shintre</a>
+        <p>Connect on LinkedIn</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="footer">
+    <p>© 2025 Samruddhi Ashok Shintre | Designed with passion 💜</p>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            name: "Samruddhi Ashok Shintre",
+            tagline: "Aspiring Engineer | Python & C Programmer | AI & Robotics Enthusiast",
+            intro_text: "A quick learner, good listener, and team player passionate about building smart and innovative solutions.",
+            about_text: "I am an engineering student who has studied Python and C programming languages in my first year. I have strong fundamentals and a keen interest in learning new technologies. I am a quick learner, a good listener, and enjoy teamwork. I love working on innovative projects that combine technology and real-world problem solving.",
+            email: "samruddhishintre76@gmail.com",
+            linkedin_text: "Samruddhi Shintre",
+            linkedin_url: "https://linkedin.com/in/samruddhi-shintre",
+            background_color: "#f8f0ff",
+            hero_gradient_start: "#9b59b6",
+            hero_gradient_mid: "#6b9bd1",
+            hero_gradient_end: "#ff9ecd",
+            text_color: "#333333"
+        };
+
+        async function onConfigChange(config) {
+            document.getElementById('name').textContent = config.name || defaultConfig.name;
+            document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+            document.getElementById('intro-text').textContent = config.intro_text || defaultConfig.intro_text;
+            document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+            
+            const emailLink = document.getElementById('email-link');
+            const email = config.email || defaultConfig.email;
+            emailLink.textContent = email;
+            emailLink.href = `mailto:${email}`;
+            
+            const linkedinLink = document.getElementById('linkedin-link');
+            linkedinLink.textContent = config.linkedin_text || defaultConfig.linkedin_text;
+            linkedinLink.href = config.linkedin_url || defaultConfig.linkedin_url;
+
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const heroStart = config.hero_gradient_start || defaultConfig.hero_gradient_start;
+            const heroMid = config.hero_gradient_mid || defaultConfig.hero_gradient_mid;
+            const heroEnd = config.hero_gradient_end || defaultConfig.hero_gradient_end;
+            
+            document.querySelector('.portfolio-wrapper').style.background = `linear-gradient(135deg, #ffffff 0%, ${bgColor} 100%)`;
+            document.querySelector('.hero').style.background = `linear-gradient(135deg, ${heroStart} 0%, ${heroMid} 50%, ${heroEnd} 100%)`;
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            if (window.elementSdk) {
+                                window.elementSdk.config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        }
+                    },
+                    {
+                        get: () => config.hero_gradient_start || defaultConfig.hero_gradient_start,
+                        set: (value) => {
+                            if (window.elementSdk) {
