@@ -1,2 +1,2 @@
 # Portfolio
-This is portfolio of syami
+This is portfolio of Samruddhi 
